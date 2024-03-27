@@ -105,6 +105,8 @@ struct Add: ParsableCommand {
         
         Persistence.projectName = "Dream Diary"
         
+        Persistence.saveIfEmpty(model: [Sonho](), filename: "sonhos.json")
+        
         //        // Criar sonhos vazios
         //        let sonhos: [Sonho] = []
         //
@@ -154,6 +156,8 @@ struct List: ParsableCommand {
 
 //aqui dentro vai a logica de listar o sonho
     func run() throws {
+        
+        Persistence.saveIfEmpty(model: [Sonho](), filename: "sonhos.json")
         
         func verbosePrint(_ text: String) {
             if verbose == true {
